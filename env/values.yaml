@@ -5,6 +5,13 @@ cleanup:
     helm.sh/hook-delete-policy: hook-succeeded
   Args:
   - --cleanup
+controllerbuild:
+  enabled: true
+controllerworkflow:
+  enabled: false
+docker-registry:
+  enabled: false
+dockerRegistry: gcr.io
 expose:
   Annotations:
     helm.sh/hook: post-install,post-upgrade
@@ -13,7 +20,7 @@ expose:
   - --v
   - 4
   config:
-    domain: 35.205.139.120.nip.io
+    domain: 35.190.200.12.nip.io
     exposer: Ingress
     http: "true"
 jenkins:
@@ -21,4 +28,5 @@ jenkins:
     Global:
       EnvVars:
         TILLER_NAMESPACE: kube-system
+  enabled: false
 prow: {}
